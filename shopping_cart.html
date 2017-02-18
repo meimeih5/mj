@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<link rel="stylesheet" href="css/pooling.css" />
+		<link rel="stylesheet" href="css/shopping_cart.css" />
+		<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+		<script src="js/tools.js"></script>
+	</head>
+	<body>
+		<!-----------------------------导航开始------------------------------>
+		<div id="nav">
+			<a class="logo" href="index.html"></a>
+			<ul class="wrap">
+				<li><a class="item" href="###">美聚电器</a></li>
+				<li><a href="###">美聚集团</a></li>
+				<li><a href="###">个人产品</a></li>
+				<li><a href="###">服务支持</a></li>
+				<li><a href="###">新闻频道</a></li>
+				<li><a href="###">企业采购</a></li>
+			</ul>
+			
+			<!-----------------------------搜索开始------------------------------>
+			<div id="optWrap">
+				<a href="###"></a>
+				<input id="search" placeholder="热水器" />
+			</div>
+			<!-----------------------------搜索结束------------------------------>
+			
+            <div id="phone">
+				<a class="phone-icon" href="###"></a>
+				<div id="ewm">
+					<img src="img/header_qr_app.png"/>
+				</div>
+			</div>
+			
+			<div id="shopping-car">
+				<a class="shopping-car" href="###"></a>
+				<div id="login-box">
+					立即<a href="###">登录</a>，查看购物车商品
+				</div>
+			</div>
+			
+			<div id="register">
+				<a class="register" href="login.html"><i></i><span>登录</span></a>
+				<ul id="login-list">
+					<li><a href="###">我的订单</a></li>
+					<li><a href="###">我的优惠券</a></li>
+					<li><a href="###">我的积分</a></li>
+					<li><a href="###">我的权益</a></li>
+					<li><a href="###">我的美聚</a></li>
+					<li><a href="###">账户设置</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-----------------------------导航结束------------------------------>
+		
+		<div id="cart-wrap">
+			<div class="cart-wrap">
+				<div class="cart-top">
+					<h2>购物车</h2>
+					<div class="cart-address">
+						配送至<select id="provinceId" style="margin-left: 18px;"></select>
+						<select id="cityId"></select>
+					</div>
+				</div>
+				<table class="cart-table">
+					<thead>
+						<tr style="background: #fafafa;height: 50px;">
+						<td><input type="checkbox" class="check-all check"/>全选</td>
+						<td>商品信息</td>
+						<td>规格</td>
+						<td>单价（元）</td>
+						<td>数量</td>
+						<td>小计（元）</td>
+						<td>操作</td>
+					</tr>
+					
+					<tr style="height: 50px;">
+						<td><input type="checkbox" class="check-all check"/>美的官方商城</td>
+					</tr>
+					</thead>
+					
+					
+					
+					<tbody>
+						<tr style="height: 100px;border-bottom: 1px solid #ccc;">
+						<td><input type="checkbox" class="check check-goods"/></td>
+						<td>
+							<img src="img/mic.jpg" style="float: left;"/>
+							<span style="float: left;">
+							浴霸 双擎导风  小夜灯功能  ZS26A	
+							</span>
+						</td>
+						<td>白色</td>
+						<td class="unit-price">749.00</td>
+						<td>
+							<input class="btn min1" type="button" value="-" />
+							<input class="count1" type="text" value="1"/>
+							<input class="btn plus1"type="button" value="+"/>
+						</td>
+						<td>749.00</td>
+						<td><a href="###">移入收藏夹</a><a class="delete" href="###" style="display: block;">删除</a></td>
+					</tr>
+					
+					<tr style="height: 100px;">
+						<td><input type="checkbox" class="check check-goods"/></td>
+						<td>
+							<img src="img/mic.jpg" style="float: left;"/>
+							<span style="float: left;">
+							浴霸 双擎导风  小夜灯功能  ZS26A	
+							</span>
+						</td>
+						<td>白色</td>
+						<td class="unit-price">749.00</td>
+						<td>
+							<input class="btn min1" type="button" value="-" />
+							<input class="count1" type="text" value="1"/>
+							<input class="btn plus1"type="button" value="+"/>
+						</td>
+						<td>749.00</td>
+						<td><a href="###">移入收藏夹</a><a class="delete" href="###" style="display: block;">删除</a></td>
+					</tr>
+					</tbody>
+					
+					<script>
+						
+						$(function(){
+								$(".min1").click(
+								function(){
+									var count=$(this).next().val();
+									var unitPrice=$(this).parent().prev().html();
+									//console.log(unitPrice);
+									//console.log(count);
+									count--;
+									if(count<1){
+										count=1;
+									}
+									var totalPrice=(count*unitPrice).toFixed(2);
+									$(this).next().val(count);
+									$(this).parent().next().html(totalPrice);
+									getTotal();
+								}
+							);
+							
+							$(".plus1").click(
+								function(){
+									var count=$(this).prev().val();
+									var unitPrice=$(this).parent().prev().html();
+									//console.log(count);
+									count++;
+									var totalPrice=(count*unitPrice).toFixed(2);
+									$(this).prev().val(count);
+									$(this).parent().next().html(totalPrice);
+									getTotal();
+								}
+							);
+							
+							$(".delete").click(
+								function(){
+									var conf = confirm('确定要删除吗？');
+									if(conf){
+										$(this).parent().parent().remove();
+										//alert(1);
+									}
+									getTotal();
+								}
+							);
+							
+							function getClass(str){  // 通过class获取元素的兼容写法
+								var all = document.getElementsByTagName("*");
+								var res = [];
+								for(var i=0;i<all.length;i++){
+									if(all[i].className.indexOf(str)!=-1){
+										res.push(all[i]);
+									}
+								}
+								return res;
+							}
+							
+							var checkAllInputs = getClass('check-all') ;
+							var selectInputs = getClass('check');
+							//var checkgoods = getClass('check-goods') ;
+							//点击选择框
+							for(var i=0;i<selectInputs.length;i++){
+								selectInputs[i].onclick=function(){
+									if(this.className.indexOf("check-all")>=0){
+										for(var j=0;j<selectInputs.length;j++){
+											selectInputs[j].checked=this.checked;
+											if(this.checked==true){
+												$("tbody tr").css("background","#fffceb");
+											}else{
+												$("tbody tr").css("background","none");
+											}
+											
+										}
+									}
+									if(!this.checked){
+										for(var i=0;i<checkAllInputs.length;i++){
+											checkAllInputs[i].checked=false;
+										}
+									}
+								}
+							}
+							
+							
+//							
+//							for(var i=0;i<checkgoods.length;i++){
+//								checkgoods[i].onlick=function(){
+//									$(this).parent().parent().css("background","#fffceb");
+//								}
+//							}
+
+							$(".check-goods").click(
+								function(){
+									if(this.checked){
+										$(this).parent().parent().css("background","#fffceb");
+									}else{
+										$(this).parent().parent().css("background","none");
+									}
+									getTotal();
+								}
+								
+							);
+							
+							$(".check-all").click(
+								function(){
+									if(this.checked){
+										$(".check-goods").parent().parent().css("background","#fffceb");
+									}
+									getTotal();
+								}
+								
+							);
+//							console.log(checkgoods.length);
+//							for(var i=0;i<checkgoods.length;i++){
+//								if(checkgoods[i].checked){
+//									//console.log(i);
+//									var p=$(this).parent().parent().children().eq(5).html();
+//									
+//								}else{
+//									console.log(i);
+//									var p=$(this).parent().parent().children().eq(5).html();
+//									console.log(p);
+//								}
+//								
+//						}
+						
+			function getTotal(){
+				var tr=$("tbody tr");
+						//var p=tr.eq(i).children().eq(0).find("check-goods");
+						//console.log(p);
+						//console.log(tr.length);
+						var c=0;
+						var p=0;
+				for(var i=0;i<tr.length;i++){
+						if(tr.eq(i).children().eq(0).find(".check-goods").prop("checked")==true){
+							c+=parseInt(tr.eq(i).children().eq(4).find(".count1").val());
+							p+=parseFloat(tr.eq(i).children().eq(5).html());
+						}
+					}
+				p=p.toFixed(2);
+				//console.log(p);	
+				$(".con").html(c);
+				$(".summated").html(p);
+			}
+				
+						});
+						
+						
+					</script>
+					
+					
+					
+				</table>
+				
+				<div class="total">
+					<input type="checkbox" class="check-all" />全选
+					<a href="###">删除</a>
+					<a href="###">移入收藏夹</a>
+					<a href="###">清除失效商品</a>
+					<span class="selected-items">已选商品<i class="con" style="color: #ff6600;font-size:16px">0</i>件</span>
+					<span>合计：￥<i class="summated">0.00</i><b>(不含运费)</b></span>
+					<a href="###" class="settle-accounts">去结算</a>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			var arr=[
+			{
+				provinceCode:"01",
+				provinceName:"北京",
+				cityNames:["朝阳","海淀","丰台"]
+			},
+			{
+				provinceCode:"02",
+				provinceName:"上海",
+				cityNames:["宝山","杨浦","黄浦","闵行"]
+			},
+			{
+				provinceCode:"03",
+				provinceName:"广东",
+				cityNames:["广州","深圳","东莞","珠海"]
+			},
+			{
+				provinceCode:"04",
+				provinceName:"陕西",
+				cityNames:["西安","汉中","咸阳","宝鸡"]
+			}
+		];
+		
+	window.onload=function(){
+		showProvince();
+		showCity(getId("provinceId").value);
+		getId("provinceId").onchange = function(){		
+		showCity(this.value);
+	}
+	}
+		
+	function showProvince(){
+		for(var i=0;i<arr.length;i++){
+			var option=$create("option");
+			option.innerHTML=arr[i].provinceName;
+			option.value=arr[i].provinceCode;
+			getId("provinceId").appendChild(option);
+		}
+	}
+	
+	function showCity(code){
+		for(var i=0;i<arr.length;i++){
+			if(arr[i].provinceCode==code){
+				getId("cityId").innerHTML ="";
+				 var citys=arr[i].cityNames;
+				 for(var j=0;j<citys.length;j++){
+					var option=$create("option");
+					option.innerHTML=citys[j];
+					getId("cityId").appendChild(option);
+				 }
+				 
+				break;
+			}
+		}
+	}
+	
+	function $create(tagName){
+		return document.createElement(tagName);
+	}
+	function getId(id){
+		return document.getElementById(id);
+	}
+		</script>
+		
+	</body>
+</html>

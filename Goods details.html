@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品详情</title>
+		<link rel="stylesheet" href="css/pooling.css" />
+		<link rel="stylesheet" href="css/goodsDetails.css" />
+		<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+		<script src="js/tools.js"></script>
+		<script src="js/ssld.js"></script>
+		<script type="text/javascript" src="js/jquery.1.4.2-min.js"></script>
+	</head>
+	<body>
+		<!-----------------------------导航开始------------------------------>
+		<div id="nav">
+			<a class="logo" href="index.html"></a>
+			<ul class="wrap">
+				<li><a class="item" href="###">美聚电器</a></li>
+				<li><a href="###">美聚集团</a></li>
+				<li><a href="###">个人产品</a></li>
+				<li><a href="###">服务支持</a></li>
+				<li><a href="###">新闻频道</a></li>
+				<li><a href="###">企业采购</a></li>
+			</ul>
+			
+			<!-----------------------------搜索开始------------------------------>
+			<div id="optWrap">
+				<a href="###"></a>
+				<input id="search" placeholder="热水器" />
+			</div>
+			<!-----------------------------搜索结束------------------------------>
+			
+            <div id="phone">
+				<a class="phone-icon" href="###"></a>
+				<div id="ewm">
+					<img src="img/header_qr_app.png"/>
+				</div>
+			</div>
+			
+			<div id="shopping-car">
+				<a class="shopping-car" href="###"></a>
+				<div id="login-box">
+					立即<a href="###">登录</a>，查看购物车商品
+				</div>
+			</div>
+			
+			<div id="register">
+				<a class="register" href="login.html"><i></i><span>登录</span></a>
+				<ul id="login-list">
+					<li><a href="###">我的订单</a></li>
+					<li><a href="###">我的优惠券</a></li>
+					<li><a href="###">我的积分</a></li>
+					<li><a href="###">我的权益</a></li>
+					<li><a href="###">我的美聚</a></li>
+					<li><a href="###">账户设置</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-----------------------------导航结束------------------------------>
+		<div id="details-wrap">
+			<div class="details-wrap">
+				<div class="crumb_wrap">
+					<a href="index.html" class="home_page">首页</a>&nbsp;&nbsp;&nbsp;>
+					<a href="ProductList.html">冰箱</a>&nbsp;&nbsp;&nbsp;>
+					<a class="crumb_self" href="javascript:void(0)">MD冰箱BCD-206TM(E)悦动白</a>
+				</div>
+				<div class="product_wrap">
+					<div class="product_left">
+						<div class="preview">
+							<div id="vertical" class="bigImg">
+								<img src="img/f63a4941b352edb9A30985.jpg" width="530" height="530" alt="" id="midimg" />
+								<div style="display:none;" id="winSelector"></div>
+							</div><!--bigImg end-->	
+							<div class="smallImg">
+								
+								<div id="imageMenu">
+									<ul>
+										<li id="onlickImg"><img src="img/f63a4941b352edb9A30985.jpg" width="120" height="120" /></li>
+										<li><img src="img/7eeaabb9ff22cce8A30058.jpg" width="120" height="120" /></li>
+										<li><img src="img/6a8f29965b181b8bA31425.jpg" width="120" height="120" /></li>
+										<li><img src="img/4d5ffa871d94996cA30397.jpg" width="120" height="120" /></li>
+										<li><img src="img/dc9f1de54647c275A30985.jpg" width="120" height="120" /></li>
+										
+									</ul>
+								</div>
+								
+							</div><!--smallImg end-->	
+							<div id="bigView" style="display:none;"><img width="1000" height="1000" alt="" src="" /></div>
+						</div>
+						
+						<div class="share_collect">
+					 		<span class="share_title">分享到</span>
+							<a href="###"><img src="img/qq.jpg"/></a>
+							<a href="###"><img src="img/wx.jpg"/></a>
+							<a href="###" class="collect_text"><img src="img/star.jpg"/></a>
+							<span id="textCollect">收藏</span>
+						</div>
+						
+					</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	// 图片上下滚动
+	var count = $("#imageMenu li").length - 5; /* 显示 6 个 li标签内容 */
+	var interval = $("#imageMenu li:first").width();
+	var curIndex = 0;
+	
+	$('.scrollbutton').click(function(){
+		if( $(this).hasClass('disabled') ) return false;
+		
+		if ($(this).hasClass('smallImgUp')) --curIndex;
+		else ++curIndex;
+		
+		$('.scrollbutton').removeClass('disabled');
+		if (curIndex == 0) $('.smallImgUp').addClass('disabled');
+		if (curIndex == count-1) $('.smallImgDown').addClass('disabled');
+		
+		$("#imageMenu ul").stop(false, true).animate({"marginLeft" : -curIndex*interval + "px"}, 600);
+	});	
+	// 解决 ie6 select框 问题
+	$.fn.decorateIframe = function(options) {
+        if ($.browser.msie && $.browser.version < 5) {
+            var opts = $.extend({}, $.fn.decorateIframe.defaults, options);
+            $(this).each(function() {
+                var $myThis = $(this);
+                //创建一个IFRAME
+                var divIframe = $("<iframe />");
+                divIframe.attr("id", opts.iframeId);
+                divIframe.css("position", "absolute");
+                divIframe.css("display", "none");
+                divIframe.css("display", "block");
+                divIframe.css("z-index", opts.iframeZIndex);
+                divIframe.css("border");
+                divIframe.css("top", "0");
+                divIframe.css("left", "0");
+                if (opts.width == 0) {
+                    divIframe.css("width", $myThis.width() + parseInt($myThis.css("padding")) * 2 + "px");
+                }
+                if (opts.height == 0) {
+                    divIframe.css("height", $myThis.height() + parseInt($myThis.css("padding")) * 2 + "px");
+                }
+                divIframe.css("filter", "mask(color=#fff)");
+                $myThis.append(divIframe);
+            });
+        }
+    }
+    $.fn.decorateIframe.defaults = {
+        iframeId: "decorateIframe1",
+        iframeZIndex: -1,
+        width: 0,
+        height: 0
+    }
+    //放大镜视窗
+    $("#bigView").decorateIframe();
+    //点击到中图
+    var midChangeHandler = null;
+	
+    $("#imageMenu li img").bind("click", function(){
+		if ($(this).attr("id") != "onlickImg") {
+			midChange($(this).attr("src").replace("small", "mid"));
+			$("#imageMenu li").removeAttr("id");
+			$(this).parent().attr("id", "onlickImg");
+		}
+	}).bind("mouseover", function(){
+		if ($(this).attr("id") != "onlickImg") {
+			window.clearTimeout(midChangeHandler);
+			midChange($(this).attr("src").replace("small", "mid"));
+			$(this).css({ "border": "3px solid #959595" });
+		}
+	}).bind("mouseout", function(){
+		if($(this).attr("id") != "onlickImg"){
+			$(this).removeAttr("style");
+			midChangeHandler = window.setTimeout(function(){
+				midChange($("#onlickImg img").attr("src").replace("small", "mid"));
+			}, 1000);
+		}
+	});
+    function midChange(src) {
+        $("#midimg").attr("src", src).load(function() {
+            changeViewImg();
+        });
+    }
+    //大视窗看图
+    function mouseover(e) {
+        if ($("#winSelector").css("display") == "none") {
+            $("#winSelector,#bigView").show();
+        }
+        $("#winSelector").css(fixedPosition(e));
+        e.stopPropagation();
+    }
+    function mouseOut(e) {
+        if ($("#winSelector").css("display") != "none") {
+            $("#winSelector,#bigView").hide();
+        }
+        e.stopPropagation();
+    }
+    $("#midimg").mouseover(mouseover); //中图事件
+    $("#midimg,#winSelector").mousemove(mouseover).mouseout(mouseOut); //选择器事件
+
+    var $divWidth = $("#winSelector").width(); //选择器宽度
+    var $divHeight = $("#winSelector").height(); //选择器高度
+    var $imgWidth = $("#midimg").width(); //中图宽度
+    var $imgHeight = $("#midimg").height(); //中图高度
+    var $viewImgWidth = $viewImgHeight = $height = null; //IE加载后才能得到 大图宽度 大图高度 大图视窗高度
+
+    function changeViewImg() {
+        $("#bigView img").attr("src", $("#midimg").attr("src").replace("mid", "big"));
+    }
+    changeViewImg();
+    $("#bigView").scrollLeft(0).scrollTop(0);
+    function fixedPosition(e) {
+        if (e == null) {
+            return;
+        }
+        var $imgLeft = $("#midimg").offset().left; //中图左边距
+        var $imgTop = $("#midimg").offset().top; //中图上边距
+        X = e.pageX - $imgLeft - $divWidth / 2; //selector顶点坐标 X
+        Y = e.pageY - $imgTop - $divHeight / 2; //selector顶点坐标 Y
+        X = X < 0 ? 0 : X;
+        Y = Y < 0 ? 0 : Y;
+        X = X + $divWidth > $imgWidth ? $imgWidth - $divWidth : X;
+        Y = Y + $divHeight > $imgHeight ? $imgHeight - $divHeight : Y;
+
+        if ($viewImgWidth == null) {
+            $viewImgWidth = $("#bigView img").outerWidth();
+            $viewImgHeight = $("#bigView img").height();
+            if ($viewImgWidth < 200 || $viewImgHeight < 200) {
+                $viewImgWidth = $viewImgHeight = 800;
+            }
+            $height = $divHeight * $viewImgHeight / $imgHeight;
+            $("#bigView").width($divWidth * $viewImgWidth / $imgWidth);
+            $("#bigView").height($height);
+        }
+        var scrollX = X * $viewImgWidth / $imgWidth;
+        var scrollY = Y * $viewImgHeight / $imgHeight;
+        $("#bigView img").css({ "left": scrollX * -1, "top": scrollY * -1 });
+        $("#bigView").css({ "top": 100, "left": $(".preview").offset().left + $(".preview").width() });
+
+        return { left: X, top: Y };
+    }
+});
+</script>
+			 	
+					
+					<div class="product_right">
+						 <h1 title="冰箱 112L活力橙 复古双门节能小冰箱 BCD-112CM(E)">
+                			 冰箱 112L活力橙 复古双门节能小冰箱 BCD-112CM(E)            
+						 </h1>
+						 <h5 title="靓丽小巧，炫彩双门双温，节能静音 ">靓丽小巧，炫彩双门双温，节能静音 </h5>
+						<div class="floor_price_act">
+						    <div class="price_act_inner">
+						        <div class="price_wrap">
+						            <span class="new_price">
+						                <span class="currency_symbol">&yen;</span>
+						                <b class="price">949.00</b>
+						            </span>
+						         </div>
+						<!--        设置了并且不是以旧换新-->
+						    </div>
+						</div> 
+						
+						<div class="floor_coupon_comment">
+                            <div class="inner_floor floor_onsale">
+                            	<h3>优惠</h3>
+                           		<div class="floor_list">
+                                       <div class="option option_act">
+                                        <span class="icon_act">送积分</span>
+                                        <span class="text_act">最高送94积分</span>
+                                    	</div>
+                                </div>
+                        	</div>
+                    
+
+                            <div class="inner_floor floor_comment J_floor_comment">
+                       			<h3>评价</h3>
+                       			<div class="floor_list">
+                                    <span class="option1">整体产品好(219)</span>
+                                    <span class="option1">款式好(120)</span>
+                                    <span class="option1">噪音小(109)</span>
+                                </div>
+                    		</div>
+                        </div>
+						
+						<div class="product-color">
+							<span class=span-color>
+								颜色
+							</span>
+							<span class="span-img">
+								<img src="img/f63a4941b352edb9A30985.jpg" width="40" height="40"/>
+							</span>
+						</div>
+						
+						<div class="product-count">
+							<span class=span-count>
+								数量
+							</span>
+							<input type="button" value="-" class="btn1 min" />
+							<input type="text" value="1" class="count"/>
+							<input type="button" value="+" class=" btn1 plus"/>
+							<span class="repertory">
+								5件库存
+							</span>
+						</div>
+						
+						<div class="address">
+							配送至<select id="provinceId" style="margin-left: 18px;"></select>
+							<select id="cityId"></select>
+						</div>
+						<div class="buy">
+							<a href="###" class="a-car">加入购物车</a>
+							<a href="###" class="a-take">立即购买</a>
+						</div>
+						
+						<div class="official">
+							<i></i><span>美的唯一官方商城</span>
+							<i></i><span>全国联保</span>
+							<i></i><span>全场包邮</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="maybe-love">
+			<div class="maybe-love">
+				<h2>你可能会喜欢</h2>
+				<ul class="love-list">
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		<div id="pro-des-nav">
+			<div class="pro-des-nav">
+				<a href="###" style="color: #0093d5;border-bottom:2px solid #0093d5 ">产品介绍</a>
+				<a href="###">评价（343）</a>
+				<a href="###">规格参数</a>
+				<a href="###">服务支持</a>
+				<a href="###">相关问题</a>
+			</div>
+		</div>
+		
+		<div id="show-img">
+			<div class="show-img tab">
+				<img src="img/5e84c508fc09a095A19965_790-.jpg"/>
+				<img src="img/7ee58e1ad84af435A2251_790-.jpg"/>
+				<img src="img/8f354ce47a04c1b0A26925_790-.jpg"/>
+				<img src="img/760b9c1ed78ff805A16312_790-.jpg"/>
+				<!--<img src="img/8434f2b8e23eda36A16435_790-.jpg.jpg"/>-->
+				<img src="img/12865e3af5a8cfb6A15169_790-.jpg"/>
+				<img src="img/aefebde927b025b7A3204_790-.jpg"/>
+				<img src="img/cc13bf298787456cA22334_790-.jpg"/>
+				
+				<img src="img/de84da76add12107A16435_790-.jpg"/>
+				<img src="img/e15efce2de4c0617A18024_790-.jpg"/>
+				<img src="img/ee9dfc92de7ba448A24442_790-.jpg"/>
+				<img src="img/fb31e827013fb4e9A1300_790-.jpg"/>
+			</div>
+			
+		</div>
+		
+		<div id="Product-evaluation">
+			<div class="Product-evaluation tab">
+				<h2>用户评价</h2>
+				<div class="evaluate">
+					<div class="total-evaluate">
+						<div class="evaluate-star">
+							<span>总体评分</span>
+							<img src="img/xx.jpg" />
+						</div>
+						<div class="user-impression">
+							<h5>用户印象</h5>
+							<span>整体产品好<i>（219）</i></span>
+							<span>款式好<i>（200）</i></span>
+							<span>冷冻速度快<i>（20）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>款式好<i>（200）</i></span>
+							<span>冷冻速度快<i>（20）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<span>整体产品好<i>（219）</i></span>
+							<p>以下评价皆来自官方直营渠道的真实用户评价</p>
+						</div>
+						<div class="user-evaluate">
+							<span>刚用，过几天再评价</span>
+							<p>[官方回复]:您的满意，就是我们最大的安慰</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="service-support">
+			<div class="service-support tab">
+				<img src="img/PC_01_01.jpg" />
+				<img src="img/PC_01_02.jpg" />
+			</div>
+		</div>
+		
+		<div id="common-problems">
+			<div class="common-problems tab">
+				<h5>冰箱常见问题</h5>
+				<p>需要使用交流220V/50HZ 电源，若电压波动范围较大，（超过176~242V的范围），有可能造成冰箱不启动，控制板和压缩机烧坏，或压缩机工作声音异常等故障，此时必须加装750W以上的自动稳压器配合使用。</p>
+			</div>
+		</div>
+		
+		
+		<div id="maybe-love">
+			<div class="maybe-love  last-look">
+				<h2>最近浏览</h2>
+				<ul class="love-list">
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+					<li>
+						<a href="###"><img src="img/9ae651587c791b5dA21618_120 120.jpg"/></a>
+						<a href="###" class="desc">冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝  </a>
+						<a href="###" class="a-price">￥1139.00</a>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		<ul id="detail_floating">
+			<li><img src="img/q.jpg"/><a>在线客服</a></li>
+			<li><img src="img/i.jpg"/><a>技术支持</a></li>
+			<li class="li-wechat"><img src="img/sm.jpg"/><a class="WeChat"><img src="img/weixin_code.png"/></a></li>
+			<li><img src="img/md.jpg"/><a href="#nav">返回顶部</a></li>
+		</ul>
+		
+		
+		<div class="pro-des-nav tabs_nav top-nav">
+				<div class="goods-info">
+					<img src="img/7eeaabb9ff22cce8A30058.jpg" width="50"/>
+					<span>冰箱 低噪静音 两天一度电 BCD-132CM(E)天际蓝</span>
+					<i>￥949.00</i>
+				</div>
+				<a href="###" style="color: #0093d5;border-bottom:2px solid #0093d5 ">产品介绍</a>
+				<a href="###">评价（343）</a>
+				<a href="###">规格参数</a>
+				<a href="###">服务支持</a>
+				<a href="###">相关问题</a>
+				<span><a class="purchase" href="javascript: ;">立即购买</a></span>
+			</div>
+		
+		<div id="footer">
+			<div class="footer">
+				<p class="footer-list">
+					<a href="###">新闻中心</a>
+					<a href="###">新闻中心</a>
+					<a href="###">新闻中心</a>
+					<a href="###">新闻中心</a>
+					<a href="###">新闻中心</a>
+					<a href="###">新闻中心</a>
+					<a href="###">新闻中心</a>
+					<a class="aa" href="###">新闻中心</a>
+					<a class="last-a" href="###"></a>
+				</p>
+				<div class="footer-list-hide">
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+					<ul>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+						<li><a href="###">集团新闻</a></li>
+					</ul>
+				</div>
+				<p class="other">其他购买平台：
+					<a href="###">天猫</a>
+					<a href="###">京东</a>
+					<a href="###">苏宁</a>
+					<a href="###" style="border-right: 1px solid #ccc;">国美在线</a>
+					<a href="###">视频专区</a>
+					<a href="###">产品专题</a>
+					<a href="###">关于我们</a>
+					<a href="###">联系我们</a>
+					<a href="###">服务条款</a>
+					<a href="###">隐私政策</a>
+					<a href="###" class="english">Select country/languageCN - 中文</a>
+				</p>
+				<p class="copyright">
+                    Copyright © 1968-2017 美的集团股份有限公司 <a href="###" target="_blank">粤ICP备09215446号</a>
+                    <img src="img/gongan.jpg" alt="粤公网安备 44060602000243号"> 粤公网安备44060602000243号
+                </p>
+                <div id="_env_">
+					<img src="img/icon_cx.png"/>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>

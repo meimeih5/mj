@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+html,body{
+    background: #F4F4F4;
+}
+a:hover{
+    color:#000;
+}
+
+#cart-wrap{
+    width: 100%;
+    .cart-wrap{
+        width: 1200px;
+        margin: 0 auto;
+        .cart-top{
+            width: 100%;
+            height: 40px;
+            margin-top:40px;
+            h2{
+            font-size: 32px;
+            font-weight: normal;
+            float: left;
+            
+            }
+            .cart-address{
+                width: 300px;
+                height: 40px;
+                float:right;
+            }
+        }
+        
+        .cart-table{
+            width: 1200px;
+            
+            border-collapse: collapse;
+            text-indent: 2em;
+            .btn{
+                width:25px;
+                height: 25px;
+                background: #fff;
+                border:none;
+                border:1px solid #ccc;
+            }
+            .count1{
+                 width:35px;
+                height: 25px;
+                background: #fff;
+                border:none;
+                border:1px solid #ccc;
+                text-align: center;
+            }
+        }
+        
+    }
+}
+
+.total{
+    width: 1200px;
+    text-indent: 2em;
+    height: 60px;
+    background: #fafafa;
+    line-height: 60px;
+    margin-top: 10px;
+    position: relative;
+    a{
+        padding: 0 20px;
+    }
+    .settle-accounts{
+        display: inline-block;
+        width:160px;
+        height: 60px;
+        background: #ff6600;
+        line-height: 60px;
+        text-align: center;
+        font-size:22px;
+        text-indent: 0;
+       
+        position: absolute;
+        right: 0;
+        top:0;
+    }
+    .selected-items{
+        display: inline-block;
+        margin-left:200px;
+        margin-right: 50px;
+    }
+    .summated{
+        font-size:22px;
+        color:#ff6600;
+        
+    }
+}

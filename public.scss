@@ -1,0 +1,37 @@
+@charset "utf-8";
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+html,body{
+    font-family: "微软雅黑";
+}
+#top{
+    width:100%;
+    background: #0092d8;
+    .top{
+       width: 1200px; 
+       height: 44px;
+       .logo{
+           width: 120px;
+           height: 44px;
+           display: inline-block;
+          background: url(../img/index_sprite.png) 0px -242px no-repeat;
+       }
+    }
+}
+
+.copyright{
+    font-size: 12px;
+    color: #ccc;
+    border-top: 1px solid #ccc;
+    height: 57px;
+    line-height: 57px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+
