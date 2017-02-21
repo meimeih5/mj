@@ -1,6 +1,6 @@
 $(function(){
 							$(".a-car").click(function(){
-								$.post("goodsdetails.php",{"goodsName":$("#goodsName").html()},function(data){
+								$.post("goodsdetails.php",{"goodsName":$(".goodsName").html(),"goodsNum":$(".count").val()},function(data){
 									
 									
 										//1、记录cookie;
