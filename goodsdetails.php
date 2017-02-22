@@ -33,7 +33,7 @@
 				$sqlstr = "insert into shoppingcart(goodsName,goodsImg,goodsnorms,goodsPrice,goodsNum,goodstotalPrice) values('".$query_row[1]."','".$query_row[4]."','".$query_row[6]."','".$query_row[2]."','".$goodsNum."','".$query_row[2]."');";
 				mysql_query($sqlstr,$conn);
 			}else{
-				$sqlstr2="update shoppingcart set goodsNum='".(($query_row1[5]+$goodsNum) * 1)."'";
+				$sqlstr2="update shoppingcart set goodsNum='".(($query_row1[5]+$goodsNum) * 1)."'where Id='".$query_row1[0]."'";
 				mysql_query($sqlstr2,$conn);
 			}
 			
